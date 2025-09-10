@@ -1,12 +1,26 @@
+"use client";
+
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/lib/auth-options';
 import { prisma } from '@/lib/db';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Link from 'next/link';
 import { Calendar, Clock, Users, FileText } from 'lucide-react';
+import dynamic from 'next/dynamic';
+
+// Dynamically import the chart component with no SSR
+const DemandChart = dynamic(
+  () => import('@/components/demand-chart').then((mod) => mod.DemandChart),
+  { ssr: false, loading: () => <div className="h-[300px] flex items-center justify-center">Loading...</div> }
+);
+
+const ProjectChart = dynamic(
+  () => import('@/components/project-chart').then((mod) => mod.ProjectChart),
+  { ssr: false, loading: () => <div className="h-[300px] flex items-center justify-center">Loading...</div> }
+);
+
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -121,18 +135,7 @@ export default async function Home() {
             <CardTitle>Demands by Status</CardTitle>
           </CardHeader>
           <CardContent className="pl-2">
-            <div className="h-[300px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={demandChartData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="count" fill="#8884d8" name="Demands" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
+            <DemandChart data={demandChartData} />
           </CardContent>
         </Card>
         <Card className="col-span-3">
@@ -141,17 +144,7 @@ export default async function Home() {
             <CardDescription>Current project distribution across statuses</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-[300px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={projectChartData} layout="vertical">
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis type="number" />
-                  <YAxis dataKey="name" type="category" width={80} />
-                  <Tooltip />
-                  <Bar dataKey="count" fill="#82ca9d" name="Projects" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
+            <ProjectChart data={projectChartData} />
           </CardContent>
         </Card>
       </div>
