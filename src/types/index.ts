@@ -1,3 +1,13 @@
+import { Icons } from '@/components/icons';
+
+export interface MainNavItem {
+  title: string;
+  href: string;
+  disabled?: boolean;
+  adminOnly?: boolean;
+  icon?: keyof typeof Icons;
+}
+
 export interface User {
   id: string;
   name: string;
