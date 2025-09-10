@@ -1,0 +1,148 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String               @id @default(cuid())
+  name            String
+  email           String               @unique
+  password        String
+  role            String               @default("TEAM_MEMBER") // ADMIN, MANAGER, TEAM_MEMBER
+  skills          String               @default("[]") // Stored as JSON string
+  capacity        Int                  @default(40) // hours per week
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
+  managedProjects Project[]            @relation("ProjectManager")
+  teamProjects    Project[]            @relation("ProjectTeam")
+  allocations     ResourceAllocation[]
+  comments        Comment[]
+  demands         Demand[]
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  description String
+  color       String
+  demands     Demand[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Priority {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  level     Int
+  color     String
+  demands   Demand[]
+  projects  Project[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Status {
+  id        String    @id @default(cuid())
+  name      String
+  type      String    // DEMAND, PROJECT, TASK
+  order     Int
+  color     String
+  demands   Demand[]
+  projects  Project[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@unique([name, type])
+}
+
+model Demand {
+  id              String               @id @default(cuid())
+  title           String
+  description     String
+  category        Category             @relation(fields: [categoryId], references: [id])
+  categoryId      String
+  priority        Priority             @relation(fields: [priorityId], references: [id])
+  priorityId      String
+  status          Status               @relation(fields: [statusId], references: [id])
+  statusId        String
+  requestedBy     String
+  requestedAt     DateTime             @default(now())
+  businessValue   Int
+  complexity      String               // LOW, MEDIUM, HIGH
+  estimatedEffort Int
+  actualEffort    Int?                 @default(0)
+  dueDate         DateTime?
+  assignedTo      User[]
+  relatedProject  Project?             @relation(fields: [projectId], references: [id])
+  projectId       String?
+  tags            String               @default("[]") // Stored as JSON string
+  attachments     String               @default("[]") // Stored as JSON string
+  comments        Comment[]
+  allocations     ResourceAllocation[]
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
+}
+
+model Project {
+  id              String               @id @default(cuid())
+  name            String
+  description     String
+  status          Status               @relation(fields: [statusId], references: [id])
+  statusId        String
+  priority        Priority             @relation(fields: [priorityId], references: [id])
+  priorityId      String
+  startDate       DateTime
+  targetEndDate   DateTime
+  actualEndDate   DateTime?
+  budget          Float
+  spent           Float                @default(0)
+  manager         User                 @relation("ProjectManager", fields: [managerId], references: [id])
+  managerId       String
+  teamMembers     User[]               @relation("ProjectTeam")
+  demands         Demand[]
+  allocations     ResourceAllocation[]
+  comments        Comment[]
+  tags            String               @default("[]") // Stored as JSON string
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
+}
+
+model ResourceAllocation {
+  id             String    @id @default(cuid())
+  user           User      @relation(fields: [userId], references: [id])
+  userId         String
+  project        Project   @relation(fields: [projectId], references: [id])
+  projectId      String
+  demand         Demand?   @relation(fields: [demandId], references: [id])
+  demandId       String?
+  startDate      DateTime
+  endDate        DateTime
+  allocatedHours Int
+  actualHours    Int?      @default(0)
+  role           String
+  status         String    @default("PLANNED") // PLANNED, IN_PROGRESS, COMPLETED, ON_HOLD
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model Comment {
+  id          String    @id @default(cuid())
+  content     String
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
+  entityType  String    // DEMAND, PROJECT, TASK
+  entityId    String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // Relations for different entity types
+  demand      Demand?   @relation(fields: [entityId], references: [id])
+  project     Project?  @relation(fields: [entityId], references: [id])
+}
