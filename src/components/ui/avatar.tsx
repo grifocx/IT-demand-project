@@ -5,6 +5,12 @@ import * as AvatarPrimitive from "@radix-ui/react-avatar"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * @description A component that displays an avatar.
+ * @param {string} className - The class name to apply to the component.
+ * @param {React.ReactNode} children - The content of the avatar.
+ * @returns {React.ReactElement} - The avatar component.
+ */
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
@@ -20,6 +26,12 @@ const Avatar = React.forwardRef<
 ))
 Avatar.displayName = AvatarPrimitive.Root.displayName
 
+/**
+ * @description A component that displays the image of an avatar.
+ * @param {string} className - The class name to apply to the component.
+ * @param {React.ReactNode} children - The content of the avatar image.
+ * @returns {React.ReactElement} - The avatar image component.
+ */
 const AvatarImage = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
@@ -32,6 +44,12 @@ const AvatarImage = React.forwardRef<
 ))
 AvatarImage.displayName = AvatarPrimitive.Image.displayName
 
+/**
+ * @description A component that displays a fallback for an avatar.
+ * @param {string} className - The class name to apply to the component.
+ * @param {React.ReactNode} children - The content of the avatar fallback.
+ * @returns {React.ReactElement} - The avatar fallback component.
+ */
 const AvatarFallback = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Fallback>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>

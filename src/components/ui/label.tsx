@@ -10,6 +10,12 @@ const labelVariants = cva(
   "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 )
 
+/**
+ * @description A component that displays a label.
+ * @param {string} className - The class name to apply to the component.
+ * @param {React.ReactNode} children - The content of the label.
+ * @returns {React.ReactElement} - The label component.
+ */
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &

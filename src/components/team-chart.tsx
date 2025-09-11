@@ -2,7 +2,13 @@
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-export function TeamChart({ data }: { data: any[] }) {
+/**
+ * @description A component that displays a bar chart for team data.
+ * @param {object} props - The props for the component.
+ * @param {{team: string, count: number}[]} props.data - The data for the chart. Each object should have a `team` name and a `count`.
+ * @returns {React.ReactElement} - The team chart component.
+ */
+export function TeamChart({ data }: { data: { team: string; count: number }[] }) {
   return (
     <div className="h-[300px] w-full">
       <ResponsiveContainer width="100%" height="100%">

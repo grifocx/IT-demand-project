@@ -21,7 +21,10 @@ const ProjectChart = dynamic(
   { ssr: false, loading: () => <div className="h-[300px] flex items-center justify-center">Loading...</div> }
 );
 
-
+/**
+ * @description The home page of the application.
+ * @returns {Promise<React.ReactElement>} - The home page component.
+ */
 export default async function Home() {
   const session = await getServerSession(authOptions);
   

@@ -1,5 +1,8 @@
 import { Icons } from '@/components/icons';
 
+/**
+ * @description The main navigation item.
+ */
 export interface MainNavItem {
   title: string;
   href: string;
@@ -8,6 +11,9 @@ export interface MainNavItem {
   icon?: keyof typeof Icons;
 }
 
+/**
+ * @description The user.
+ */
 export interface User {
   id: string;
   name: string;
@@ -17,6 +23,9 @@ export interface User {
   capacity: number; // hours per week
 }
 
+/**
+ * @description The category.
+ */
 export interface Category {
   id: string;
   name: string;
@@ -24,6 +33,9 @@ export interface Category {
   color: string;
 }
 
+/**
+ * @description The priority.
+ */
 export interface Priority {
   id: string;
   name: 'Critical' | 'High' | 'Medium' | 'Low';
@@ -31,6 +43,9 @@ export interface Priority {
   color: string;
 }
 
+/**
+ * @description The status.
+ */
 export interface Status {
   id: string;
   name: string;
@@ -39,6 +54,9 @@ export interface Status {
   color: string;
 }
 
+/**
+ * @description The demand.
+ */
 export interface Demand {
   id: string;
   title: string;
@@ -61,6 +79,9 @@ export interface Demand {
   updatedAt: Date;
 }
 
+/**
+ * @description The project.
+ */
 export interface Project {
   id: string;
   name: string;
@@ -80,6 +101,9 @@ export interface Project {
   updatedAt: Date;
 }
 
+/**
+ * @description The resource allocation.
+ */
 export interface ResourceAllocation {
   id: string;
   userId: string;
@@ -95,6 +119,9 @@ export interface ResourceAllocation {
   updatedAt: Date;
 }
 
+/**
+ * @description The comment.
+ */
 export interface Comment {
   id: string;
   content: string;
@@ -105,6 +132,9 @@ export interface Comment {
   updatedAt: Date;
 }
 
+/**
+ * @description The dashboard statistics.
+ */
 export interface DashboardStats {
   totalDemands: number;
   activeProjects: number;
