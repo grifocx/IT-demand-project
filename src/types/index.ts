@@ -14,12 +14,17 @@ export interface MainNavItem {
 /**
  * @description The user.
  */
+export interface Skill {
+  id: string;
+  name: string;
+}
+
 export interface User {
   id: string;
   name: string;
   email: string;
   role: 'admin' | 'manager' | 'team_member';
-  skills: string[];
+  skills: Skill[];
   capacity: number; // hours per week
 }
 
@@ -57,8 +62,20 @@ export interface Status {
 /**
  * @description The demand.
  */
-export interface Demand {
+export interface Tag {
   id: string;
+  name: string;
+}
+
+export interface Attachment {
+  id: string;
+  fileName: string;
+  url: string;
+  createdAt: Date;
+}
+
+export interface Demand {
+  id:string;
   title: string;
   description: string;
   categoryId: string;
@@ -73,8 +90,8 @@ export interface Demand {
   dueDate?: Date;
   assignedTo?: string[];
   relatedProjectId?: string;
-  tags: string[];
-  attachments: string[];
+  tags: Tag[];
+  attachments: Attachment[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -96,7 +113,8 @@ export interface Project {
   managerId: string;
   teamMembers: string[];
   demands: string[];
-  tags: string[];
+  tags: Tag[];
+  attachments: Attachment[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -126,8 +144,8 @@ export interface Comment {
   id: string;
   content: string;
   userId: string;
-  entityType: 'demand' | 'project' | 'task';
-  entityId: string;
+  demandId?: string;
+  projectId?: string;
   createdAt: Date;
   updatedAt: Date;
 }
