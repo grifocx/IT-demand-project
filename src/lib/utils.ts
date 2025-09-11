@@ -179,5 +179,5 @@ export function debounce<T extends (...args: any[]) => void>(
   return function (this: any, ...args: Parameters<T>) {
     clearTimeout(timeout);
     timeout = setTimeout(() => func.apply(this, args), wait);
-  };
+  } as T;
 }

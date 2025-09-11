@@ -7,6 +7,16 @@ async function main() {
   // Create admin user
   const hashedPassword = await hash('admin123', 12);
   
+  const skills = await Promise.all(
+    ['Project Management', 'System Architecture', 'DevOps'].map((skill) =>
+      prisma.skill.upsert({
+        where: { name: skill },
+        update: {},
+        create: { name: skill },
+      })
+    )
+  );
+
   const admin = await prisma.user.upsert({
     where: { email: 'admin@demandit.com' },
     update: {},
@@ -15,7 +25,9 @@ async function main() {
       email: 'admin@demandit.com',
       password: hashedPassword,
       role: 'ADMIN',
-      skills: JSON.stringify(['Project Management', 'System Architecture', 'DevOps']),
+      skills: {
+        connect: skills.map((skill) => ({ id: skill.id })),
+      },
       capacity: 40,
     },
   });
