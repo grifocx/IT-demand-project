@@ -1,5 +1,9 @@
 import { PrismaClient } from '@prisma/client';
 
+/**
+ * @description The Prisma client instance.
+ * @see https://www.prisma.io/docs/concepts/components/prisma-client
+ */
 declare global {
   // eslint-disable-next-line no-var
   var prisma: PrismaClient | undefined;
@@ -11,8 +15,12 @@ if (process.env.NODE_ENV !== 'production') {
   global.prisma = prisma;
 }
 
-// Helper function to calculate resource utilization
-export async function calculateResourceUtilization(userId: string) {
+/**
+ * @description Calculates the resource utilization percentage for a given user based on their capacity and allocated hours for in-progress allocations.
+ * @param {string} userId The ID of the user to calculate resource utilization for.
+ * @returns {Promise<number>} A promise that resolves to the resource utilization percentage for the user. Returns 0 if the user is not found.
+ */
+export async function calculateResourceUtilization(userId: string): Promise<number> {
   const user = await prisma.user.findUnique({
     where: { id: userId },
     include: {
@@ -36,8 +44,11 @@ export async function calculateResourceUtilization(userId: string) {
   return Math.min(Math.round((totalAllocatedHours / user.capacity) * 100), 100);
 }
 
-// Helper function to get dashboard statistics
-export async function getDashboardStats() {
+/**
+ * @description Retrieves a variety of statistics for the main dashboard, including total demands, active projects, team capacity, resource utilization, and counts of demands and projects by status. It also fetches the next 5 upcoming milestones.
+ * @returns {Promise<object>} A promise that resolves to an object containing the dashboard statistics.
+ */
+export async function getDashboardStats(): Promise<object> {
   const [
     totalDemands,
     activeProjects,

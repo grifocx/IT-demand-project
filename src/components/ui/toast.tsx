@@ -5,8 +5,19 @@ import { X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
+/**
+ * @description A component that provides a toast.
+ * @param {React.ReactNode} children - The content of the toast provider.
+ * @returns {React.ReactElement} - The toast provider component.
+ */
 const ToastProvider = ToastPrimitives.Provider;
 
+/**
+ * @description A component that displays a toast viewport.
+ * @param {string} className - The class name to apply to the component.
+ * @param {React.ReactNode} children - The content of the toast viewport.
+ * @returns {React.ReactElement} - The toast viewport component.
+ */
 const ToastViewport = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Viewport>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport>
@@ -38,6 +49,13 @@ const toastVariants = cva(
   }
 );
 
+/**
+ * @description A component that displays a toast.
+ * @param {string} className - The class name to apply to the component.
+ * @param {string} variant - The variant of the toast.
+ * @param {React.ReactNode} children - The content of the toast.
+ * @returns {React.ReactElement} - The toast component.
+ */
 const Toast = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root> &
@@ -53,6 +71,12 @@ const Toast = React.forwardRef<
 });
 Toast.displayName = ToastPrimitives.Root.displayName;
 
+/**
+ * @description A component that displays a toast action.
+ * @param {string} className - The class name to apply to the component.
+ * @param {React.ReactNode} children - The content of the toast action.
+ * @returns {React.ReactElement} - The toast action component.
+ */
 const ToastAction = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Action>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Action>
@@ -68,6 +92,11 @@ const ToastAction = React.forwardRef<
 ));
 ToastAction.displayName = ToastPrimitives.Action.displayName;
 
+/**
+ * @description A component that displays a toast close button.
+ * @param {string} className - The class name to apply to the component.
+ * @returns {React.ReactElement} - The toast close button component.
+ */
 const ToastClose = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Close>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Close>
@@ -86,6 +115,12 @@ const ToastClose = React.forwardRef<
 ));
 ToastClose.displayName = ToastPrimitives.Close.displayName;
 
+/**
+ * @description A component that displays a toast title.
+ * @param {string} className - The class name to apply to the component.
+ * @param {React.ReactNode} children - The content of the toast title.
+ * @returns {React.ReactElement} - The toast title component.
+ */
 const ToastTitle = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Title>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Title>
@@ -98,6 +133,12 @@ const ToastTitle = React.forwardRef<
 ));
 ToastTitle.displayName = ToastPrimitives.Title.displayName;
 
+/**
+ * @description A component that displays a toast description.
+ * @param {string} className - The class name to apply to the component.
+ * @param {React.ReactNode} children - The content of the toast description.
+ * @returns {React.ReactElement} - The toast description component.
+ */
 const ToastDescription = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Description>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Description>
@@ -110,8 +151,14 @@ const ToastDescription = React.forwardRef<
 ));
 ToastDescription.displayName = ToastPrimitives.Description.displayName;
 
+/**
+ * @description The props for the toast component.
+ */
 type ToastProps = React.ComponentPropsWithoutRef<typeof Toast>;
 
+/**
+ * @description The action element for the toast component.
+ */
 type ToastActionElement = React.ReactElement<typeof ToastAction>;
 
 export {

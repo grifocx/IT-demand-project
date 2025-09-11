@@ -2,7 +2,13 @@
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-export function DemandChart({ data }: { data: any[] }) {
+/**
+ * @description A component that displays a bar chart for demand data.
+ * @param {object} props - The props for the component.
+ * @param {{name: string, count: number}[]} props.data - The data for the chart. Each object should have a `name` (status) and a `count`.
+ * @returns {React.ReactElement} - The demand chart component.
+ */
+export function DemandChart({ data }: { data: { name: string; count: number }[] }) {
   return (
     <div className="h-[300px] w-full">
       <ResponsiveContainer width="100%" height="100%">

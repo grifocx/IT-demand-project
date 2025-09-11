@@ -10,6 +10,10 @@ import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertCircle } from 'lucide-react';
 
+/**
+ * @description The sign in page for the application.
+ * @returns {React.ReactElement} - The sign in page component.
+ */
 export default function SignInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
