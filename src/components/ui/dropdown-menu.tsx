@@ -5,53 +5,43 @@ import { Check, ChevronRight, Circle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * @description A component that displays a dropdown menu.
- * @param {React.ReactNode} children - The content of the dropdown menu.
- * @returns {React.ReactElement} - The dropdown menu component.
+ * Displays a menu to the user — such as a set of actions or functions — triggered by a button.
  */
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
 /**
- * @description A component that triggers the dropdown menu.
- * @param {React.ReactNode} children - The content of the dropdown menu trigger.
- * @returns {React.ReactElement} - The dropdown menu trigger component.
+ * The button that triggers the dropdown menu.
  */
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 
 /**
- * @description A component that groups dropdown menu items.
- * @param {React.ReactNode} children - The content of the dropdown menu group.
- * @returns {React.ReactElement} - The dropdown menu group component.
+ * A group of dropdown menu items.
  */
 const DropdownMenuGroup = DropdownMenuPrimitive.Group;
 
 /**
- * @description A component that portals the dropdown menu.
- * @param {React.ReactNode} children - The content of the dropdown menu portal.
- * @returns {React.ReactElement} - The dropdown menu portal component.
+ * A portal for the dropdown menu.
  */
 const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
 
 /**
- * @description A component that displays a sub-menu of the dropdown menu.
- * @param {React.ReactNode} children - The content of the dropdown menu sub-menu.
- * @returns {React.ReactElement} - The dropdown menu sub-menu component.
+ * A sub-menu of the dropdown menu.
  */
 const DropdownMenuSub = DropdownMenuPrimitive.Sub;
 
 /**
- * @description A component that groups dropdown menu radio items.
- * @param {React.ReactNode} children - The content of the dropdown menu radio group.
- * @returns {React.ReactElement} - The dropdown menu radio group component.
+ * A group of dropdown menu radio items.
  */
 const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
 /**
- * @description A component that triggers a sub-menu of the dropdown menu.
- * @param {string} className - The class name to apply to the component.
- * @param {boolean} inset - Whether the sub-menu trigger should be inset.
- * @param {React.ReactNode} children - The content of the dropdown menu sub-menu trigger.
- * @returns {React.ReactElement} - The dropdown menu sub-menu trigger component.
+ * The button that triggers a sub-menu of the dropdown menu.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @param props.inset - If `true`, the sub-menu trigger will be inset.
+ * @param props.children - The content of the sub-menu trigger.
+ * @returns The sub-menu trigger component.
  */
 const DropdownMenuSubTrigger = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
@@ -76,10 +66,12 @@ DropdownMenuSubTrigger.displayName =
   DropdownMenuPrimitive.SubTrigger.displayName;
 
 /**
- * @description A component that displays the content of a sub-menu of the dropdown menu.
- * @param {string} className - The class name to apply to the component.
- * @param {React.ReactNode} children - The content of the dropdown menu sub-menu content.
- * @returns {React.ReactElement} - The dropdown menu sub-menu content component.
+ * The content of a sub-menu of the dropdown menu.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @param props.children - The content of the sub-menu.
+ * @returns The sub-menu content component.
  */
 const DropdownMenuSubContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubContent>,
@@ -98,11 +90,13 @@ DropdownMenuSubContent.displayName =
   DropdownMenuPrimitive.SubContent.displayName;
 
 /**
- * @description A component that displays the content of the dropdown menu.
- * @param {string} className - The class name to apply to the component.
- * @param {number} sideOffset - The offset of the dropdown menu content from the trigger.
- * @param {React.ReactNode} children - The content of the dropdown menu content.
- * @returns {React.ReactElement} - The dropdown menu content component.
+ * The content of the dropdown menu.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @param props.sideOffset - The offset of the dropdown menu content from the trigger.
+ * @param props.children - The content of the dropdown menu.
+ * @returns The dropdown menu content component.
  */
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
@@ -123,11 +117,13 @@ const DropdownMenuContent = React.forwardRef<
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 
 /**
- * @description A component that displays an item in the dropdown menu.
- * @param {string} className - The class name to apply to the component.
- * @param {boolean} inset - Whether the dropdown menu item should be inset.
- * @param {React.ReactNode} children - The content of the dropdown menu item.
- * @returns {React.ReactElement} - The dropdown menu item component.
+ * An item in the dropdown menu.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @param props.inset - If `true`, the item will be inset.
+ * @param props.children - The content of the item.
+ * @returns The dropdown menu item component.
  */
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
@@ -148,11 +144,13 @@ const DropdownMenuItem = React.forwardRef<
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
 
 /**
- * @description A component that displays a checkbox item in the dropdown menu.
- * @param {string} className - The class name to apply to the component.
- * @param {boolean} checked - Whether the checkbox item is checked.
- * @param {React.ReactNode} children - The content of the dropdown menu checkbox item.
- * @returns {React.ReactElement} - The dropdown menu checkbox item component.
+ * A checkbox item in the dropdown menu.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @param props.checked - If `true`, the checkbox will be checked.
+ * @param props.children - The content of the checkbox item.
+ * @returns The dropdown menu checkbox item component.
  */
 const DropdownMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
@@ -179,10 +177,12 @@ DropdownMenuCheckboxItem.displayName =
   DropdownMenuPrimitive.CheckboxItem.displayName;
 
 /**
- * @description A component that displays a radio item in the dropdown menu.
- * @param {string} className - The class name to apply to the component.
- * @param {React.ReactNode} children - The content of the dropdown menu radio item.
- * @returns {React.ReactElement} - The dropdown menu radio item component.
+ * A radio item in the dropdown menu.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @param props.children - The content of the radio item.
+ * @returns The dropdown menu radio item component.
  */
 const DropdownMenuRadioItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
@@ -207,11 +207,13 @@ const DropdownMenuRadioItem = React.forwardRef<
 DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
 
 /**
- * @description A component that displays a label in the dropdown menu.
- * @param {string} className - The class name to apply to the component.
- * @param {boolean} inset - Whether the dropdown menu label should be inset.
- * @param {React.ReactNode} children - The content of the dropdown menu label.
- * @returns {React.ReactElement} - The dropdown menu label component.
+ * A label in the dropdown menu.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @param props.inset - If `true`, the label will be inset.
+ * @param props.children - The content of the label.
+ * @returns The dropdown menu label component.
  */
 const DropdownMenuLabel = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Label>,
@@ -232,9 +234,11 @@ const DropdownMenuLabel = React.forwardRef<
 DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName;
 
 /**
- * @description A component that displays a separator in the dropdown menu.
- * @param {string} className - The class name to apply to the component.
- * @returns {React.ReactElement} - The dropdown menu separator component.
+ * A separator in the dropdown menu.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @returns The dropdown menu separator component.
  */
 const DropdownMenuSeparator = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Separator>,
@@ -249,9 +253,11 @@ const DropdownMenuSeparator = React.forwardRef<
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
 
 /**
- * @description A component that displays a shortcut in the dropdown menu.
- * @param {string} className - The class name to apply to the component.
- * @returns {React.ReactElement} - The dropdown menu shortcut component.
+ * A shortcut in the dropdown menu.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @returns The dropdown menu shortcut component.
  */
 const DropdownMenuShortcut = ({
   className,

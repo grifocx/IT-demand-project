@@ -8,8 +8,9 @@ import { Button } from './ui/button';
 import { Icons } from './icons';
 
 /**
- * @description A component that displays the main navigation bar.
- * @returns {React.ReactElement | null} - The main navigation bar component or null if the user is not authenticated.
+ * A component that displays the main navigation bar.
+ *
+ * @returns The main navigation bar component or null if the user is not authenticated.
  */
 export function MainNav() {
   const { data: session } = useSession();

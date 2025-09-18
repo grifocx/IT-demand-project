@@ -32,7 +32,9 @@ src/
 │   ├── ui/                 # Reusable UI components
 │   ├── demand-chart.tsx    # Demand statistics chart
 │   ├── project-chart.tsx   # Project statistics chart
-│   └── team-chart.tsx      # Team statistics chart
+│   ├── team-chart.tsx      # Team statistics chart
+│   ├── icons.tsx           # Icon library
+│   └── theme-provider.tsx  # Theme provider for dark/light mode
 ├── lib/
 │   ├── auth-options.ts     # NextAuth configuration
 │   ├── db.ts               # Prisma client
@@ -87,6 +89,10 @@ src/
 - `start`: Starts the production server.
 - `lint`: Lints the code.
 - `type-check`: Checks for TypeScript errors.
+
+## Code Documentation
+
+The codebase is thoroughly documented using JSDoc-style docstrings. This provides in-editor documentation for all functions, classes, and components, making it easier to understand the purpose of each part of the application.
 
 ## Key Dependencies
 

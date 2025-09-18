@@ -16,8 +16,9 @@ import { signOut, useSession } from 'next-auth/react';
 import { Icons } from './icons';
 
 /**
- * @description A component that displays a user button.
- * @returns {React.ReactElement} - The user button component.
+ * A component that displays a user button.
+ *
+ * @returns The user button component.
  */
 export function UserButton() {
   const { data: session } = useSession();

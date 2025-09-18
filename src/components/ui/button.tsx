@@ -33,23 +33,27 @@ const buttonVariants = cva(
 );
 
 /**
- * @description The props for the button component.
- * @param {boolean} asChild - Whether the button should be rendered as a child component.
+ * The props for the button component.
  */
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
+  /**
+   * If `true`, the button will be rendered as a child component.
+   */
   asChild?: boolean;
 }
 
 /**
- * @description A component that displays a button.
- * @param {string} className - The class name to apply to the component.
- * @param {string} variant - The variant of the button.
- * @param {string} size - The size of the button.
- * @param {boolean} asChild - Whether the button should be rendered as a child component.
- * @param {React.ReactNode} children - The content of the button.
- * @returns {React.ReactElement} - The button component.
+ * A clickable button.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @param props.variant - The variant of the button.
+ * @param props.size - The size of the button.
+ * @param props.asChild - If `true`, the button will be rendered as a child component.
+ * @param props.children - The content of the button.
+ * @returns The button component.
  */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {

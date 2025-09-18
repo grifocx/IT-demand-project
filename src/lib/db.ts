@@ -1,7 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 
 /**
- * @description The Prisma client instance.
+ * The Prisma client instance.
+ *
+ * This is a singleton instance of the Prisma client.
+ * It is created once and reused across the application.
+ * In development, it is stored in a global variable to avoid creating a new instance on every hot reload.
+ *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client
  */
 declare global {
@@ -16,9 +21,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 /**
- * @description Calculates the resource utilization percentage for a given user based on their capacity and allocated hours for in-progress allocations.
- * @param {string} userId The ID of the user to calculate resource utilization for.
- * @returns {Promise<number>} A promise that resolves to the resource utilization percentage for the user. Returns 0 if the user is not found.
+ * Calculates the resource utilization percentage for a given user.
+ *
+ * @param userId - The ID of the user.
+ * @returns The resource utilization percentage for the user, or 0 if the user is not found.
  */
 export async function calculateResourceUtilization(userId: string): Promise<number> {
   const user = await prisma.user.findUnique({
@@ -45,8 +51,9 @@ export async function calculateResourceUtilization(userId: string): Promise<numb
 }
 
 /**
- * @description Retrieves a variety of statistics for the main dashboard, including total demands, active projects, team capacity, resource utilization, and counts of demands and projects by status. It also fetches the next 5 upcoming milestones.
- * @returns {Promise<object>} A promise that resolves to an object containing the dashboard statistics.
+ * Retrieves statistics for the dashboard.
+ *
+ * @returns An object containing dashboard statistics, including total demands, active projects, team capacity, resource utilization, demands by status, projects by status, and upcoming milestones.
  */
 export async function getDashboardStats(): Promise<object> {
   const [
