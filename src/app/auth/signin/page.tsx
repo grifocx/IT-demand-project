@@ -11,8 +11,10 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertCircle } from 'lucide-react';
 
 /**
- * @description The sign in page for the application.
- * @returns {React.ReactElement} - The sign in page component.
+ * The sign-in page for the application.
+ * This page allows users to sign in with their email and password.
+ *
+ * @returns The sign-in page component.
  */
 export default function SignInPage() {
   const [email, setEmail] = useState('');
@@ -23,6 +25,11 @@ export default function SignInPage() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/';
 
+  /**
+   * Handles the form submission for signing in.
+   *
+   * @param e - The form event.
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);

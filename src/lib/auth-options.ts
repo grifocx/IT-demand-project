@@ -4,19 +4,24 @@ import { compare } from 'bcryptjs';
 import { prisma } from './db';
 
 /**
- * @description The authentication options for NextAuth.
+ * Configuration options for NextAuth.js.
+ *
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions: AuthOptions = {
   /**
-   * @description The session strategy to use.
+   * Strategy for session management.
+   * Using 'jwt' for session management.
+   *
    * @see https://next-auth.js.org/configuration/options#session
    */
   session: {
     strategy: 'jwt',
   },
   /**
-   * @description The authentication providers to use.
+   * Authentication providers.
+   * Using the Credentials provider for email and password authentication.
+   *
    * @see https://next-auth.js.org/configuration/providers
    */
   providers: [
@@ -27,10 +32,11 @@ export const authOptions: AuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       /**
-       * @description The authorize callback for the credentials provider.
-       * @param credentials The credentials to authorize.
-       * @returns The user object if the credentials are valid, otherwise null.
-       * @see https://next-auth.js.org/configuration/providers/credentials#authorize-callback
+       * Authorize user based on credentials.
+       *
+       * @param credentials - The user's credentials.
+       * @returns The user object if authentication is successful, otherwise null.
+       * @throws {Error} If email or password are not provided, user is not found, or password is not valid.
        */
       async authorize(credentials) {
         if (!credentials?.email || !credentials.password) {
@@ -61,16 +67,17 @@ export const authOptions: AuthOptions = {
     }),
   ],
   /**
-   * @description The callbacks for NextAuth.
+   * Callbacks for NextAuth.js.
+   *
    * @see https://next-auth.js.org/configuration/callbacks
    */
   callbacks: {
     /**
-     * @description The JWT callback.
-     * @param token The JWT token.
-     * @param user The user object.
-     * @returns The JWT token with the user's ID and role.
-     * @see https://next-auth.js.org/configuration/callbacks#jwt-callback
+     * Called when a JWT is created.
+     *
+     * @param token - The JWT token.
+     * @param user - The user object.
+     * @returns The JWT token with user id and role.
      */
     async jwt({ token, user }) {
       if (user) {
@@ -80,11 +87,11 @@ export const authOptions: AuthOptions = {
       return token;
     },
     /**
-     * @description The session callback.
-     * @param session The session object.
-     * @param token The JWT token.
-     * @returns The session object with the user's ID and role.
-     * @see https://next-auth.js.org/configuration/callbacks#session-callback
+     * Called when a session is created.
+     *
+     * @param session - The session object.
+     * @param token - The JWT token.
+     * @returns The session object with user id and role.
      */
     async session({ session, token }) {
       if (session.user) {
@@ -95,7 +102,8 @@ export const authOptions: AuthOptions = {
     },
   },
   /**
-   * @description The pages for NextAuth.
+   * Custom pages for NextAuth.js.
+   *
    * @see https://next-auth.js.org/configuration/pages
    */
   pages: {

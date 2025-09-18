@@ -8,20 +8,29 @@ import Link from 'next/link';
 import { Calendar, Clock, Users, FileText } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
-// Dynamically import the chart component with no SSR
+/**
+ * Dynamically imported DemandChart component.
+ * This component is loaded on the client-side only.
+ */
 const DemandChart = dynamic(
   () => import('@/components/demand-chart').then((mod) => mod.DemandChart),
   { ssr: false, loading: () => <div className="h-[300px] flex items-center justify-center">Loading...</div> }
 );
 
+/**
+ * Dynamically imported ProjectChart component.
+ * This component is loaded on the client-side only.
+ */
 const ProjectChart = dynamic(
   () => import('@/components/project-chart').then((mod) => mod.ProjectChart),
   { ssr: false, loading: () => <div className="h-[300px] flex items-center justify-center">Loading...</div> }
 );
 
 /**
- * @description The home page of the application.
- * @returns {Promise<React.ReactElement>} - The home page component.
+ * The home page of the application.
+ * This page displays a dashboard with statistics about users, demands, and projects.
+ *
+ * @returns The home page component.
  */
 export default async function Home() {
   const session = await getServerSession(authOptions);
