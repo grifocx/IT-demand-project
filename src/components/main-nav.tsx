@@ -56,7 +56,7 @@ export function MainNav() {
         </Link>
         <nav className="hidden items-center space-x-6 text-sm font-medium md:flex">
           {mainNavItems.map((item) => {
-            if (item.adminOnly && session.user.role !== 'ADMIN') return null;
+            if (item.adminOnly && !['ADMIN', 'MANAGER'].includes(session.user.role)) return null;
             const Icon = Icons[item.icon as keyof typeof Icons];
             return (
               <Link
