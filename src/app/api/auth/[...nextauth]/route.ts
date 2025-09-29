@@ -2,7 +2,8 @@ import NextAuth from 'next-auth';
 import { authOptions } from '@/lib/auth-options';
 
 /**
- * @description The NextAuth handler.
+ * The NextAuth.js API route handler.
+ *
  * @see https://next-auth.js.org/getting-started/introduction
  */
 const handler = NextAuth(authOptions);

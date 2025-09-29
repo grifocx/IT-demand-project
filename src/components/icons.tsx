@@ -5,26 +5,31 @@ import dynamic from 'next/dynamic';
 const defaultSize = 20;
 
 /**
- * @description The name of the icon to display.
+ * The name of the icon to display.
+ * This is a key of the `dynamicIconImports` object from `lucide-react`.
  */
 type IconName = keyof typeof dynamicIconImports;
 
 /**
- * @description The props for the icon component.
- * @param {IconName} name - The name of the icon to display.
+ * The props for the Icon component.
  */
 interface IconProps extends Omit<LucideProps, 'ref'> {
+  /**
+   * The name of the icon to display.
+   */
   name: IconName;
 }
 
 /**
- * @description A collection of icons that can be used in the application.
+ * A collection of dynamically imported icons from `lucide-react`.
+ * This allows for lazy loading of icons, which can improve performance.
  */
 export const Icons = {
   /**
-   * @description The logo icon.
-   * @param {LucideProps} props - The props for the component.
-   * @returns {React.ReactElement} - The logo icon component.
+   * The application logo.
+   *
+   * @param props - The props for the component.
+   * @returns The logo icon component.
    */
   logo: (props: LucideProps) => (
     <svg
@@ -50,419 +55,422 @@ export const Icons = {
     </svg>
   ),
   /**
-   * @description The dashboard icon.
+   * Represents a dashboard.
    */
   dashboard: dynamic(dynamicIconImports['layout-dashboard']),
   /**
-   * @description The file text icon.
+   * Represents a text file.
    */
   fileText: dynamic(dynamicIconImports['file-text']),
   /**
-   * @description The folder kanban icon.
+   * Represents a Kanban board in a folder.
    */
   folderKanban: dynamic(dynamicIconImports['folder-kanban']),
   /**
-   * @description The users icon.
+   * Represents a group of users.
    */
   users: dynamic(dynamicIconImports.users),
   /**
-   * @description The bar chart icon.
+   * Represents a bar chart for statistics.
    */
   barChart: dynamic(dynamicIconImports['bar-chart']),
   /**
-   * @description The bell icon.
+   * Represents a notification bell.
    */
   bell: dynamic(dynamicIconImports.bell),
   /**
-   * @description The user icon.
+   * Represents a single user.
    */
   user: dynamic(dynamicIconImports.user),
   /**
-   * @description The settings icon.
+   * Represents settings or configuration.
    */
   settings: dynamic(dynamicIconImports.settings),
   /**
-   * @description The log out icon.
+   * Represents a log out action.
    */
   logOut: dynamic(dynamicIconImports['log-out']),
   /**
-   * @description The plus icon.
+   * Represents an add or create action.
    */
   plus: dynamic(dynamicIconImports.plus),
   /**
-   * @description The search icon.
+   * Represents a search action.
    */
   search: dynamic(dynamicIconImports.search),
   /**
-   * @description The filter icon.
+   * Represents a filter action.
    */
   filter: dynamic(dynamicIconImports.filter),
   /**
-   * @description The chevron down icon.
+   * Represents a downward-pointing chevron, often used for dropdowns or accordions.
    */
   chevronDown: dynamic(dynamicIconImports['chevron-down']),
   /**
-   * @description The chevron up icon.
+   * Represents an upward-pointing chevron.
    */
   chevronUp: dynamic(dynamicIconImports['chevron-up']),
   /**
-   * @description The chevron left icon.
+   * Represents a left-pointing chevron.
    */
   chevronLeft: dynamic(dynamicIconImports['chevron-left']),
   /**
-   * @description The chevron right icon.
+   * Represents a right-pointing chevron.
    */
   chevronRight: dynamic(dynamicIconImports['chevron-right']),
   /**
-   * @description The x icon.
+   * Represents a close or cancel action.
    */
   x: dynamic(dynamicIconImports.x),
   /**
-   * @description The check icon.
+   * Represents a success or confirmation action.
    */
   check: dynamic(dynamicIconImports.check),
   /**
-   * @description The alert circle icon.
+   * Represents an alert or warning.
    */
   alertCircle: dynamic(dynamicIconImports['alert-circle']),
   /**
-   * @description The check circle icon.
+   * Represents a successful action in a circle.
    */
   checkCircle: dynamic(dynamicIconImports['check-circle']),
   /**
-   * @description The x circle icon.
+   * Represents a close or cancel action in a circle.
    */
   xCircle: dynamic(dynamicIconImports['x-circle']),
   /**
-   * @description The info icon.
+   * Represents informational content.
    */
   info: dynamic(dynamicIconImports.info),
   /**
-   * @description The help circle icon.
+   * Represents a help or question mark icon.
    */
   helpCircle: dynamic(dynamicIconImports['help-circle']),
   /**
-   * @description The external link icon.
+   * Represents an external link.
    */
   externalLink: dynamic(dynamicIconImports['external-link']),
   /**
-   * @description The link icon.
+   * Represents a link.
    */
   link: dynamic(dynamicIconImports.link),
   /**
-   * @description The download icon.
+   * Represents a download action.
    */
   download: dynamic(dynamicIconImports.download),
   /**
-   * @description The upload icon.
+   * Represents an upload action.
    */
   upload: dynamic(dynamicIconImports.upload),
   /**
-   * @description The trash icon.
+   * Represents a delete or trash action.
    */
   trash: dynamic(dynamicIconImports['trash-2']),
   /**
-   * @description The edit icon.
+   * Represents an edit action.
    */
   edit: dynamic(dynamicIconImports['edit-2']),
   /**
-   * @description The copy icon.
+   * Represents a copy action.
    */
   copy: dynamic(dynamicIconImports.copy),
   /**
-   * @description The eye icon.
+   * Represents a view or visibility action.
    */
   eye: dynamic(dynamicIconImports.eye),
   /**
-   * @description The eye off icon.
+   * Represents a hidden or visibility off action.
    */
   eyeOff: dynamic(dynamicIconImports['eye-off']),
   /**
-   * @description The mail icon.
+   * Represents an email.
    */
   mail: dynamic(dynamicIconImports.mail),
   /**
-   * @description The message square icon.
+   * Represents a message or comment.
    */
   messageSquare: dynamic(dynamicIconImports['message-square']),
   /**
-   * @description The send icon.
+   * Represents a send action.
    */
   send: dynamic(dynamicIconImports.send),
   /**
-   * @description The paperclip icon.
+   * Represents an attachment.
    */
   paperclip: dynamic(dynamicIconImports.paperclip),
   /**
-   * @description The image icon.
+   * Represents an image file.
    */
   image: dynamic(dynamicIconImports.image),
   /**
-   * @description The file icon.
+   * Represents a generic file.
    */
   file: dynamic(dynamicIconImports.file),
   /**
-   * @description The file text icon.
+   * Represents a text file. (alias for fileText)
    */
   fileTextIcon: dynamic(dynamicIconImports['file-text']),
   /**
-   * @description The file spreadsheet icon.
+   * Represents a spreadsheet file.
    */
   fileSpreadsheet: dynamic(dynamicIconImports['file-spreadsheet']),
   /**
-   * @description The file code icon.
+   * Represents a code file.
    */
   fileCode: dynamic(dynamicIconImports['file-code']),
   /**
-   * @description The file archive icon.
+   * Represents an archive file.
    */
   fileArchive: dynamic(dynamicIconImports['file-archive']),
   /**
-   * @description The file audio icon.
+   * Represents an audio file.
    */
   fileAudio: dynamic(dynamicIconImports['file-audio']),
   /**
-   * @description The file video icon.
+   * Represents a video file.
    */
   fileVideo: dynamic(dynamicIconImports['file-video']),
   /**
-   * @description The file pdf icon.
+   * Represents a PDF file.
    */
   filePdf: dynamic(dynamicIconImports['file-pdf']),
   /**
-   * @description The file word icon.
+   * Represents a Word document file.
    */
   fileWord: dynamic(dynamicIconImports['file-word']),
   /**
-   * @description The file excel icon.
+   * Represents an Excel file.
    */
   fileExcel: dynamic(dynamicIconImports['file-excel']),
   /**
-   * @description The file powerpoint icon.
+   * Represents a PowerPoint file.
    */
   filePowerpoint: dynamic(dynamicIconImports['file-powerpoint']),
   /**
-   * @description The more horizontal icon.
+   * Represents a "more options" horizontal icon.
    */
   moreHorizontal: dynamic(dynamicIconImports['more-horizontal']),
   /**
-   * @description The more vertical icon.
+   * Represents a "more options" vertical icon.
    */
   moreVertical: dynamic(dynamicIconImports['more-vertical']),
   /**
-   * @description The menu icon.
+   * Represents a menu.
    */
   menu: dynamic(dynamicIconImports.menu),
   /**
-   * @description The grid icon.
+   * Represents a grid layout.
    */
   grid: dynamic(dynamicIconImports['grid'] || dynamicIconImports['layout-grid']),
   /**
-   * @description The list icon.
+   * Represents a list layout.
    */
   list: dynamic(dynamicIconImports.list),
   /**
-   * @description The columns icon.
+   * Represents columns.
    */
   columns: dynamic(dynamicIconImports.columns),
   /**
-   * @description The arrow up icon.
+   * Represents an upward arrow.
    */
   arrowUp: dynamic(dynamicIconImports['arrow-up']),
   /**
-   * @description The arrow down icon.
+   * Represents a downward arrow.
    */
   arrowDown: dynamic(dynamicIconImports['arrow-down']),
   /**
-   * @description The arrow left icon.
+   * Represents a leftward arrow.
    */
   arrowLeft: dynamic(dynamicIconImports['arrow-left']),
   /**
-   * @description The arrow right icon.
+   * Represents a rightward arrow.
    */
   arrowRight: dynamic(dynamicIconImports['arrow-right']),
   /**
-   * @description The arrow up right icon.
+   * Represents an upward-right arrow.
    */
   arrowUpRight: dynamic(dynamicIconImports['arrow-up-right']),
   /**
-   * @description The arrow down right icon.
+   * Represents a downward-right arrow.
    */
   arrowDownRight: dynamic(dynamicIconImports['arrow-down-right']),
   /**
-   * @description The arrow down left icon.
+   * Represents a downward-left arrow.
    */
   arrowDownLeft: dynamic(dynamicIconImports['arrow-down-left']),
   /**
-   * @description The arrow up left icon.
+   * Represents an upward-left arrow.
    */
   arrowUpLeft: dynamic(dynamicIconImports['arrow-up-left']),
   /**
-   * @description The move icon.
+   * Represents a move action.
    */
   move: dynamic(dynamicIconImports.move),
   /**
-   * @description The maximize icon.
+   * Represents a maximize action.
    */
   maximize: dynamic(dynamicIconImports['maximize-2']),
   /**
-   * @description The minimize icon.
+   * Represents a minimize action.
    */
   minimize: dynamic(dynamicIconImports['minimize-2']),
   /**
-   * @description The refresh cw icon.
+   * Represents a clockwise refresh action.
    */
   refreshCw: dynamic(dynamicIconImports['refresh-cw']),
   /**
-   * @description The rotate ccw icon.
+   * Represents a counter-clockwise rotation.
    */
   rotateCcw: dynamic(dynamicIconImports['rotate-ccw']),
   /**
-   * @description The rotate cw icon.
+   * Represents a clockwise rotation.
    */
   rotateCw: dynamic(dynamicIconImports['rotate-cw']),
   /**
-   * @description The save icon.
+   * Represents a save action.
    */
   save: dynamic(dynamicIconImports.save),
   /**
-   * @description The share icon.
+   * Represents a share action.
    */
   share: dynamic(dynamicIconImports['share-2']),
   /**
-   * @description The shield icon.
+   * Represents a shield for security.
    */
   shield: dynamic(dynamicIconImports.shield),
   /**
-   * @description The star icon.
+   * Represents a star for favorites or ratings.
    */
   star: dynamic(dynamicIconImports.star),
   /**
-   * @description The sun icon.
+   * Represents the sun, often for light mode.
    */
   sun: dynamic(dynamicIconImports.sun),
   /**
-   * @description The moon icon.
+   * Represents the moon, often for dark mode.
    */
   moon: dynamic(dynamicIconImports.moon),
   /**
-   * @description The zap icon.
+   * Represents a zap or lightning bolt.
    */
   zap: dynamic(dynamicIconImports.zap),
   /**
-   * @description The github icon.
+   * Represents GitHub.
    */
   github: dynamic(dynamicIconImports.github),
   /**
-   * @description The gitlab icon.
+   * Represents GitLab.
    */
   gitlab: dynamic(dynamicIconImports.gitlab),
   /**
-   * @description The slack icon.
+   * Represents Slack.
    */
   slack: dynamic(dynamicIconImports.slack),
   /**
-   * @description The twitter icon.
+   * Represents Twitter.
    */
   twitter: dynamic(dynamicIconImports.twitter),
   /**
-   * @description The facebook icon.
+   * Represents Facebook.
    */
   facebook: dynamic(dynamicIconImports.facebook),
   /**
-   * @description The instagram icon.
+   * Represents Instagram.
    */
   instagram: dynamic(dynamicIconImports.instagram),
   /**
-   * @description The linkedin icon.
+   * Represents LinkedIn.
    */
   linkedin: dynamic(dynamicIconImports.linkedin),
   /**
-   * @description The youtube icon.
+   * Represents YouTube.
    */
   youtube: dynamic(dynamicIconImports.youtube),
   /**
-   * @description The twitch icon.
+   * Represents Twitch.
    */
   twitch: dynamic(dynamicIconImports.twitch),
   /**
-   * @description The dribbble icon.
+   * Represents Dribbble.
    */
   dribbble: dynamic(dynamicIconImports.dribbble),
   /**
-   * @description The behance icon.
+   * Represents Behance.
    */
   behance: dynamic(dynamicIconImports['behance'] || dynamicIconImports['brand-behance']),
   /**
-   * @description The figma icon.
+   * Represents Figma.
    */
   figma: dynamic(dynamicIconImports.figma),
   /**
-   * @description The trello icon.
+   * Represents Trello.
    */
   trello: dynamic(dynamicIconImports.trello),
   /**
-   * @description The slack icon.
+   * Represents Slack. (alias for slack)
    */
   slackIcon: dynamic(dynamicIconImports.slack),
   /**
-   * @description The git icon.
+   * Represents Git.
    */
   git: dynamic(dynamicIconImports['git']),
   /**
-   * @description The git branch icon.
+   * Represents a Git branch.
    */
   gitBranch: dynamic(dynamicIconImports['git-branch']),
   /**
-   * @description The git commit icon.
+   * Represents a Git commit.
    */
   gitCommit: dynamic(dynamicIconImports['git-commit']),
   /**
-   * @description The git merge icon.
+   * Represents a Git merge.
    */
   gitMerge: dynamic(dynamicIconImports['git-merge']),
   /**
-   * @description The git pull request icon.
+   * Represents a Git pull request.
    */
   gitPullRequest: dynamic(dynamicIconImports['git-pull-request']),
   /**
-   * @description The git compare icon.
+   * Represents a Git compare action.
    */
   gitCompare: dynamic(dynamicIconImports['git-compare']),
   /**
-   * @description The git fork icon.
+   * Represents a Git fork action.
    */
   gitFork: dynamic(dynamicIconImports['git-fork']),
   /**
-   * @description The git commit icon.
+   * Represents a Git commit. (alias for gitCommit)
    */
   gitCommitIcon: dynamic(dynamicIconImports['git-commit']),
   /**
-   * @description The git merge icon.
+   * Represents a Git merge. (alias for gitMerge)
    */
   gitMergeIcon: dynamic(dynamicIconImports['git-merge']),
   /**
-   * @description The git pull request icon.
+   * Represents a Git pull request. (alias for gitPullRequest)
    */
   gitPullRequestIcon: dynamic(dynamicIconImports['git-pull-request']),
   /**
-   * @description The git compare icon.
+   * Represents a Git compare action. (alias for gitCompare)
    */
   gitCompareIcon: dynamic(dynamicIconImports['git-compare']),
   /**
-   * @description The git fork icon.
+   * Represents a Git fork action. (alias for gitFork)
    */
   gitForkIcon: dynamic(dynamicIconImports['git-fork']),
   /**
-   * @description The git branch icon.
+   * Represents a Git branch. (alias for gitBranch)
    */
   gitBranchIcon: dynamic(dynamicIconImports['git-branch']),
 };
 
 /**
- * @description A component that displays an icon.
- * @param {IconProps} props - The props for the component.
- * @returns {React.ReactElement} - The icon component.
+ * A component that displays an icon by name.
+ *
+ * @param props - The props for the component.
+ * @param props.name - The name of the icon to display.
+ * @param props.size - The size of the icon.
+ * @returns The icon component.
  */
 export function Icon({ name, size = defaultSize, ...props }: IconProps) {
   const LucideIcon = Icons[name];

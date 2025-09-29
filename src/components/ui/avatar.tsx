@@ -6,10 +6,12 @@ import * as AvatarPrimitive from "@radix-ui/react-avatar"
 import { cn } from "@/lib/utils"
 
 /**
- * @description A component that displays an avatar.
- * @param {string} className - The class name to apply to the component.
- * @param {React.ReactNode} children - The content of the avatar.
- * @returns {React.ReactElement} - The avatar component.
+ * An image element with a fallback for representing a user.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @param props.children - The content of the avatar.
+ * @returns The avatar component.
  */
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
@@ -27,10 +29,12 @@ const Avatar = React.forwardRef<
 Avatar.displayName = AvatarPrimitive.Root.displayName
 
 /**
- * @description A component that displays the image of an avatar.
- * @param {string} className - The class name to apply to the component.
- * @param {React.ReactNode} children - The content of the avatar image.
- * @returns {React.ReactElement} - The avatar image component.
+ * The image of the avatar.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @param props.children - The content of the avatar image.
+ * @returns The avatar image component.
  */
 const AvatarImage = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
@@ -45,10 +49,12 @@ const AvatarImage = React.forwardRef<
 AvatarImage.displayName = AvatarPrimitive.Image.displayName
 
 /**
- * @description A component that displays a fallback for an avatar.
- * @param {string} className - The class name to apply to the component.
- * @param {React.ReactNode} children - The content of the avatar fallback.
- * @returns {React.ReactElement} - The avatar fallback component.
+ * A fallback for the avatar when the image is not available.
+ *
+ * @param props - The props for the component.
+ * @param props.className - Additional classes to apply to the component.
+ * @param props.children - The content of the avatar fallback.
+ * @returns The avatar fallback component.
  */
 const AvatarFallback = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Fallback>,

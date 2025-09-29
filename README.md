@@ -1,6 +1,6 @@
 # DemandIT - IT Demand Management
 
-DemandIT is a strategic IT demand and project management platform built with Next.js, TypeScript, and Prisma. It provides a comprehensive solution for managing IT demands, projects, and resources.
+DemandIT is a strategic IT demand and project management platform built with Next.js, TypeScript, and Prisma. It provides a comprehensive solution for managing IT demands, projects, and resources, enabling organizations to make informed decisions and optimize their IT landscape.
 
 ## Features
 
@@ -13,13 +13,26 @@ DemandIT is a strategic IT demand and project management platform built with Nex
 
 ## Architecture
 
-This application is built with the Next.js App Router, which enables a hybrid approach to rendering. Most components are server-rendered by default, but can be made client-side components with the `'use client'` directive.
+This application is built with the Next.js App Router, which enables a hybrid approach to rendering, with most components being server-rendered by default. This improves performance and SEO, while still allowing for client-side interactivity where needed using the `'use client'` directive.
 
-- **Authentication:** Authentication is handled by NextAuth.js, with a credentials provider for email and password authentication. Session management is done using JWTs.
-- **Database:** Prisma is used as the ORM to interact with the PostgreSQL database. The database schema is defined in `prisma/schema.prisma`.
-- **UI:** The UI is built with React and Tailwind CSS. Reusable UI components are built with Radix UI and are located in `src/components/ui`.
-- **State Management:** For client-side state, React's built-in state management (e.g., `useState`, `useContext`) is used. For server-side data fetching and caching, React Query is used.
-- **Styling:** Tailwind CSS is used for styling, with `tailwind-merge` and `clsx` for managing class names.
+### Authentication
+
+Authentication is handled by NextAuth.js, a complete open-source authentication solution for Next.js applications. It is configured in `src/lib/auth-options.ts` and uses a Credentials provider for email and password authentication. User sessions are managed using JSON Web Tokens (JWTs).
+
+### Database
+
+The application uses a PostgreSQL database, with Prisma as the Object-Relational Mapper (ORM). The database schema is defined in `prisma/schema.prisma` and includes tables for users, demands, projects, resources, and more. Prisma Client is used to interact with the database in a type-safe manner.
+
+The database can be seeded with initial data by running `npx prisma db seed`. The seed script is located at `prisma/seed.ts`.
+
+### UI Components
+
+The user interface is built with React and styled with Tailwind CSS. Reusable UI components are built using `shadcn/ui`, which provides a set of accessible and customizable components built on top of Radix UI and styled with Tailwind CSS. These components are located in the `src/components/ui` directory.
+
+### State Management
+
+-   **Client-side state:** For managing local component state, React's built-in hooks like `useState` and `useContext` are used.
+-   **Server-side state:** For fetching, caching, and managing server-side data, the application uses React Query (`@tanstack/react-query`). This provides a powerful and efficient way to handle data fetching and synchronization with the server.
 
 ## Project Structure
 
@@ -29,13 +42,13 @@ src/
 │   ├── api/                # API routes
 │   └── auth/               # Authentication pages
 ├── components/
-│   ├── ui/                 # Reusable UI components
+│   ├── ui/                 # Reusable UI components from shadcn/ui
 │   ├── demand-chart.tsx    # Demand statistics chart
 │   ├── project-chart.tsx   # Project statistics chart
 │   └── team-chart.tsx      # Team statistics chart
 ├── lib/
 │   ├── auth-options.ts     # NextAuth configuration
-│   ├── db.ts               # Prisma client
+│   ├── db.ts               # Prisma client and database utilities
 │   └── utils.ts            # Utility functions
 └── types/
     ├── index.ts            # Shared type definitions
@@ -85,8 +98,12 @@ src/
 - `dev`: Runs the development server.
 - `build`: Builds the application for production.
 - `start`: Starts the production server.
-- `lint`: Lints the code.
+- `lint`: Lints the code using ESLint.
 - `type-check`: Checks for TypeScript errors.
+
+## Code Documentation
+
+The codebase is thoroughly documented using JSDoc-style docstrings. This provides in-editor documentation for all functions, classes, and components, making it easier to understand the purpose of each part of the application.
 
 ## Key Dependencies
 
@@ -95,7 +112,7 @@ src/
 - [NextAuth.js](https://next-auth.js.org/) - Authentication for Next.js.
 - [Prisma](https://www.prisma.io/) - Next-generation ORM for Node.js and TypeScript.
 - [Recharts](https://recharts.org/) - A composable charting library built on React components.
-- [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible components for building high-quality design systems.
+- [shadcn/ui](https://ui.shadcn.com/) - Re-usable components built using Radix UI and Tailwind CSS.
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework.
 
 ## Contributing
